@@ -1,0 +1,75 @@
+﻿@page "/pizzas"
+@using Ratatouille.Data
+@inject PizzaService PizzaSvc
+
+<h1>Choose your pizza</h1>
+
+<p>We have all these delicious recipes:</p>
+
+	@if(todaysPizzas == null)
+	{
+		<p>We're finding out what pizzas are available today...</p>
+	}
+	else
+	{
+		<table>
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Ingredienti</th>
+					<th>Vegetariana</th>
+					<th>Vegana</th>
+					<th>Prezzo</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var pizza in todaysPizzas)
+				{
+					<tr>
+						<td class="truncate-text"> @pizza.Name</td>
+						<td class="truncate-text"> @pizza.Description</td>
+						<td>@pizza.Vegetarian</td>
+						<td>@pizza.Vegan</td>
+						<td>@pizza.Price</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	}
+
+<style>
+	/* Classe per troncare i testi */
+	.truncate-text {
+		white-space: nowrap; /* Evita che il testo vada su più righe */
+		overflow: hidden; /* Nasconde il contenuto in eccesso */
+		text-overflow: ellipsis; /* Aggiunge "..." quando il testo è troppo lungo */
+		max-width: 200px; /* Larghezza massima per il contenitore */
+	}
+
+	/* Aggiungi uno stile alla tabella per un layout migliore */
+	table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+
+	th, td {
+		border: 1px solid #ddd;
+		padding: 8px;
+		text-align: left;
+	}
+
+	th {
+		background-color: #f2f2f2;
+	}
+</style>
+
+@code {
+
+	private Pizza[]? todaysPizzas;
+
+	protected override async Task OnInitializedAsync()
+	{
+		todaysPizzas = await PizzaSvc.GetPizzasAsync();
+	}
+
+}

@@ -1,0 +1,31 @@
+﻿@page "/pizzasDB"
+@using Ratatouille.Data
+@inject HttpClient HttpClient
+@inject NavigationManager NavigationManager
+
+<h3>PizzasDB</h3>
+
+<ul>
+    @if (specials != null && specials.Any())
+    {
+        foreach (var pizza in specials)
+        {
+            <li>@pizza.Name - @pizza.Price €</li>
+        }
+    }
+    else
+    {
+        <li>Caricamento in corso o nessuna pizza disponibile.</li>
+    }
+</ul>
+
+@code {
+
+	private List<Pizza>? specials;
+
+	protected override async Task OnInitializedAsync()
+	{
+		specials = await HttpClient.GetFromJsonAsync<List<Pizza>>(NavigationManager.BaseUri + "specials");
+	}
+
+}
