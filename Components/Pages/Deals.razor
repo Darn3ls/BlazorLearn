@@ -1,0 +1,11 @@
+﻿@page "/deals"
+
+<h1>Today's Deals</h1>
+
+<CascadingValue Name="DealName" Value=@textDeal>
+    <CurrentDeal/>
+</CascadingValue>
+
+@code {
+    string textDeal = "Super Sale Monday";
+}
