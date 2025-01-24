@@ -1,3 +1,4 @@
+using Ratatouille;
 using Ratatouille.Components;
 using Ratatouille.Data;
 
@@ -9,6 +10,9 @@ builder.Services.AddRazorComponents()
 
 // Register the pizzas service
 builder.Services.AddSingleton<PizzaService>();
+
+// Add the AppState class
+builder.Services.AddScoped<PizzaSalesState>();
 
 //Utilizza HttpClient per ottenere il codice JSON per le pizze
 builder.Services.AddHttpClient();
@@ -45,6 +49,8 @@ app.UseAntiforgery();
 
 // Configura la route predefinita per i controller dell'applicazione MVC
 app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+
+
 
 
 // Initialize the database

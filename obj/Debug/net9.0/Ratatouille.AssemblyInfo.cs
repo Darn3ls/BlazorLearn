@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ratatouille")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fa79e5f4e8c7bd09730cc4918fbffdfff072081a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3faaa189fae436c20b462f8681dbd4f643cd974d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ratatouille")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ratatouille")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

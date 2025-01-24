@@ -1,0 +1,17 @@
+﻿@page "/pizza-app-state"
+
+@rendermode InteractiveServer
+@inject PizzaSalesState GlobalPizzaSales
+
+<h1>Welcome to example of App State</h1>
+
+<p>Today, we've sold this many pizzas: @GlobalPizzaSales.PizzasSoldToday</p>
+
+<button @onclick="IncrementSales">Buy a Pizza</button>
+
+@code {
+    private void IncrementSales()
+    {
+        GlobalPizzaSales.PizzasSoldToday++;
+    }
+}

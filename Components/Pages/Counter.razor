@@ -3,6 +3,8 @@
 @page "/counter"
 @rendermode InteractiveServer
 
+@inject PizzaSalesState GlobalPizzaSales
+
 <PageTitle>Counter</PageTitle>
 
 <h1>Counter</h1>
@@ -17,6 +19,10 @@
 <input @bind="text" />
 <button @onclick="() => text = string.Empty">Clear</button>
 <p>@text</p>
+
+<p>
+    <button @onclick="IncrementSales">Buy a Pizza (App State Global)</button>
+</p>
 
 
 @code {
@@ -35,4 +41,9 @@
     }
 
     string text = "";
+
+    private void IncrementSales()
+    {
+        GlobalPizzaSales.PizzasSoldToday++;
+    }
 }
